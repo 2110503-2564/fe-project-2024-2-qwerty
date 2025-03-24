@@ -24,6 +24,7 @@ export default async function TopMenu() {
         </Link>
             
             <TopMenuItem  title = 'Companies' pageRef = '/companies'/>
+            <TopMenuItem  title = 'Profile' pageRef = '/profile'/>
             {
                 session?<TopMenuItem  title = 'New Booking' pageRef = '/booking'/>:null
             }
