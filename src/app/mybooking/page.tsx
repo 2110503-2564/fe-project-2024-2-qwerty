@@ -22,7 +22,6 @@ export default function List(){
         return (<div className="text-center">Loading...</div>);
     }
     const updateFunction = (id:string, start:Date|undefined, end:Date|undefined) => {
-        console.log("calledUpdateFunction");
         updateAppointment(id, start, end);
         setChangeData(!changeData);
     }

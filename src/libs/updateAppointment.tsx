@@ -7,13 +7,11 @@ import getAppointment from "./getAppointment";
 
 export default async function updateAppointment(appointmentID: string, startDate: Date|undefined, endDate: Date|undefined){
       
-      console.log("update")
       const session = await getServerSession(authOptions);
       if(!session?.user.token){
             throw new Error("No User Found");
       }
       const appt = (await getAppointment(appointmentID)).data;
-      console.log(appt);
       appt.startTime = startDate??appt.startTime;
       appt.endTime = endDate??appt.endTime;
       
@@ -25,8 +23,6 @@ export default async function updateAppointment(appointmentID: string, startDate
             },
             body: JSON.stringify(appt),
       });
-      console.log('AFTER');
-      console.log(appt);
 
       if(!response.ok){
             console.log('----------------------------------------');

@@ -5,7 +5,6 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
 export default async function getAppointments(companyID?: string){
       
-      console.log("get");
       const session = await getServerSession(authOptions);  
       if(!session?.user.token){
             throw new Error("No User Found");
@@ -29,9 +28,6 @@ export default async function getAppointments(companyID?: string){
       }
 
       if(!response.ok){
-            console.log('----------------------------');
-            console.log(response);
-            console.log('----------------------------');
             throw new Error("Unable to fetch appointments");
       }
       return await response.json();

@@ -13,7 +13,6 @@ export default async function userRegister(name: string, userEmail: string, tel:
             }),
       });
 
-      console.log(response);
       if(!response.ok){
             throw new Error("Unable to register");
       }

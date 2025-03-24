@@ -1,22 +1,16 @@
-interface VenueItem {
+interface User {
     _id: string,
     name: string,
-    address: string,
-    district: string,
-    province: string,
-    postalcode: string,
+    email: string,
     tel: string,
-    picture: string,
-    dailyrate: number,
-    __v: number,
-    id: string
+    role: string,
+    createdAt: Date,
+    __v: number
   }
   
-  interface VenueJson {
+  interface UserJson {
     success: boolean,
-    count: number,
-    pagination: Object,
-    data: VenueItem[]
+    data: User
   }
 
   interface BookingItem {
