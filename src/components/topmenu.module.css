@@ -16,6 +16,7 @@
 .logoimg{
       height: 100%;
       width: auto;
+      margin-left: 6px;
 }
 
 .itemcontainer {
@@ -25,9 +26,12 @@
       margin-top: auto;
       margin-left: 5px;
       margin-bottom: auto;
+      color: rgb(126, 126, 126); /* สีปกติ */
+      transition: color 0.3s ease-in-out;
 }
 
 .itemcontainer:hover {
-      background-color: rgb(230, 245, 255);
       border-radius: 3px;
+      color: rgb(0, 0, 0);
 }
+

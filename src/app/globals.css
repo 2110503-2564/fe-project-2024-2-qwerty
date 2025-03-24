@@ -91,7 +91,8 @@ body {
 
 body {
   margin-top: 50px;
-  color: rgb(var(--foreground-rgb));
+  color:black;
+  background-color: white;
   /*
   background: linear-gradient(
       to bottom,
@@ -103,7 +104,7 @@ body {
 }
 
 a {
-  color: inherit;
+  color: black;
   text-decoration: none;
 }
 
