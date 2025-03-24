@@ -1,0 +1,24 @@
+/* profile.module.css */
+
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .profileHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profilePicture {
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .profileDetails {
+    text-align: left;
+  }

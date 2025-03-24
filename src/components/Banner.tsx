@@ -17,14 +17,14 @@ export default function Banner () {
 			<Image src = {covers[index]}
 			alt = 'cover' 
 			fill = {true} 
-			objectFit = 'cover'/>
-			<div className = {styles.bannerText}>
-				<h1 className = 'text-4xl font-medium'>Online Job Fair Registration</h1>
-				<h3 className = 'text-xl font-serif'>Oppotunity to find the job you dreamed of.</h3>
-			</div>
+			objectFit = 'cover'
+			priority
+			/>
+			
+			<div className = {styles.bannerText}></div>
 			{session?<div className='z-20 absolute top-5 right-10 font-semibold text-yellow-600 text-xl'>Welcome {session.user?.name}</div>:null}
-			<button className = "text-center bg-white text-cyan-600 border border-cyan-600 font-semibold py-2 px-2 m-2 rounded z-30 absolute bottom-0 right-0 hover:bg-cyan-600 hover:text-white hover:border-transparent"
-			onClick={(e) => {e.stopPropagation(); router.push('/venue')}}>Start Now</button>
+			{/*<button className = "text-center bg-white text-cyan-600 border border-cyan-600 font-semibold py-2 px-2 m-2 rounded z-30 absolute bottom-0 right-0 hover:bg-cyan-600 hover:text-white hover:border-transparent"
+			onClick={(e) => {e.stopPropagation(); router.push('/venue')}}>Start Now</button>*/}
         </div>
     );
 }
