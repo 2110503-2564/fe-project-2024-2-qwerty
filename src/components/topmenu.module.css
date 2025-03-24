@@ -1,0 +1,33 @@
+.menucontainer{
+      height: 50px;
+      background-color: white;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      z-index: 30;
+      border-top: 1px solid lightgrey;
+      border-bottom: 1px solid lightgrey;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+}
+
+.logoimg{
+      height: 100%;
+      width: auto;
+}
+
+.itemcontainer {
+      width: 150px;
+      height: 100%;
+      text-align: center;
+      margin-top: auto;
+      margin-left: 5px;
+      margin-bottom: auto;
+}
+
+.itemcontainer:hover {
+      background-color: rgb(230, 245, 255);
+      border-radius: 3px;
+}
