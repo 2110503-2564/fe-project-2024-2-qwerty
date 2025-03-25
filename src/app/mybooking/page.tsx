@@ -32,10 +32,10 @@ export default function List(){
     const json = data;
     return (
         <div>
-            <h2 className="text-center text-xl">Total of {json.count} Appointments</h2>
+            <h2 className="text-center text-2xl my-5">Total of {json.count} Appointments</h2>
             <div style = {{margin:"20px", display:"flex", flexDirection:"column", padding:"10px"}}>
             {(json.count == 0)?"No Companies":json.data.map((item) => (
-            <div className={`w-full rounded px-5 py-2 my-2 flex flex-row`} style={{backgroundColor: `${editMode.get(item._id)?'lightgreen':'lavender'}`}}key={item._id}>
+            <div className={`w-full rounded px-5 py-2 my-2 flex flex-row border-2 border-black shadow-lg`} style={{backgroundColor: `${editMode.get(item._id)?'lightgreen':'lavender'}`}}key={item._id}>
                 <div className="w-[90%] flex flex-col space-y-5"> 
                     <div className="text-md">UserID: {item.user}</div>
                     <div className="text-md">Company: {item.company.name}</div>
