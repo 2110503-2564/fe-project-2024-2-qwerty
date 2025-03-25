@@ -20,12 +20,12 @@ export default function Banner () {
             objectFit = 'cover'
             priority
             />
-         <div className="absolute top-0 right-0 w-[50vw] h-[49vw] bg-blue-400 rounded-l-full shadow-2xl">
+         <div className="absolute top-0 right-0 w-[50vw] h-screen bg-blue-400 rounded-l-full shadow-2xl">
     {/* เนื้อหาภายในครึ่งวงกลม */}
     <div className="relative z-10 flex flex-col items-center justify-center h-full">
 	
 	
-	{session?<h1 className="text-black text-4xl font-bold mb-4">{session.user?.name}</h1>:null}
+	{/*session?<h1 className="text-black text-4xl font-bold mb-4">{session.user?.name}</h1>:null*/}
     <h1 className="text-white text-6xl font-bold mb-4 justify-center ">Online Job Fair</h1>
 	  <h1 className="text-white text-lg font-bold  justify-center">Meet numerous leading companies and diverse job opportunities with the chance for </h1>
 	  <h1 className="text-white text-lg font-bold mb-4 justify-center">immediate online interviews at our Online Job Fair</h1>
