@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Banner></Banner>
-      <h1 className="text-center item-center mt-[20px] text-3xl">Online Job Fair</h1>
+     {/* <h1 className="text-center item-center mt-[20px] text-3xl">Online Job Fair</h1>
       <h3 className="text-center">Oppotunity to find the job you dreamed of.</h3>
 
       <div className="text-center flex justify-center">
@@ -28,7 +28,7 @@ export default function Home() {
         buttonText="หางานฟรี!"
       />
       </div>
-      
+      */}
       
 
 
