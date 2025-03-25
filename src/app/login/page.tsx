@@ -1,11 +1,9 @@
 'use client'
 
 import { TextField } from "@mui/material";
-import { Session } from "next-auth";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import getSessionFromServer from "@/libs/getSessionFromServer";
 import Link from "next/link";
 
 export default function Login(){
@@ -16,8 +14,7 @@ export default function Login(){
       const [email, setEmail] = useState<string|undefined>(undefined);
       const [password, setPassword] = useState<string|undefined>(undefined);
 
-      const [session, setSession] = useState<Session|null>(null);
-      getSessionFromServer().then((data) => {setSession(data)});
+      const {data: session} = useSession();
       if(session){
             (useRouter()).push('/');
       }

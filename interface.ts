@@ -56,3 +56,10 @@ interface AppointmentJson {
   pagination: Object,
   data: AppointmentItem[]
 }
+
+interface BanInfo {
+  _id: string,
+  user: string,
+  bannedAt: Date,
+  endTime: Date,
+}
