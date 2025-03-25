@@ -32,8 +32,9 @@ export default function List(){
     const json = data;
     return (
         <div>
-            <h2 className="text-center text-xl">Total of {json.count} Appointments</h2>
-            <div style = {{margin:"20px", display:"flex", flexDirection:"column", padding:"10px"}}>
+            <h2 className="text-center text-xl mt-[20px]">Total of {json.count} Appointments</h2>
+            <div className=" justify-center flex">
+            <div className="w-1/2 bg-red-200" style = {{ margin:"20px", display:"flex", flexDirection:"column", padding:"10px"}}>
             {(json.count == 0)?"No Companies":json.data.map((item) => (
             <div className={`w-full rounded px-5 py-2 my-2 flex flex-row`} style={{backgroundColor: `${editMode.get(item._id)?'lightgreen':'lavender'}`}}key={item._id}>
                 <div className="w-[90%] flex flex-col space-y-5"> 
@@ -44,10 +45,11 @@ export default function List(){
                 </div>
                 <div className="w-[10%] flex flex-col justify-center items-center space-y-5">
                     <button className="text-white bg-blue-400 rounded-md border-2 border-black border-solid w-[100px] h-[40px] shadow-md hover:bg-blue-300" onClick={()=>{setEditMode(editMode?.set(item._id, !editMode.get(item._id)));setChange(!change)}}>Edit</button>
-                    <button className="text-white bg-red-500 rounded-md border-2 border-black border-solid w-[100px] h-[40px] shadow-md hover:bg-red-400" onClick={()=>{deleteFunction(item._id)}}>Delete</button>
+                    <button className="text-white bg-red-500 rounded-md border-2 border-black border-solid w-[100px] h-[40px] shadow-md hover:bg-red-400" onClick={() => {deleteFunction(item._id)}}>Delete</button>
                 </div>
             </div>
             ))}
+            </div>
             </div>
         </div>
     );

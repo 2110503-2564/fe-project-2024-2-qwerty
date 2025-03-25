@@ -4,6 +4,7 @@ import styles from './banner.module.css'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 export default function Banner () {
     const covers = ['/img/cover.jpg','/img/cover2.jpg','/img/cover3.jpg','/img/cover4.jpg','/img/cover5.jpg'];
@@ -31,9 +32,9 @@ export default function Banner () {
 	  <h1 className="text-white text-lg font-bold mb-4 justify-center">immediate online interviews at our Online Job Fair</h1>
 	  <div>
 	  
-	  <button className="px-7 py-3  bg-blue-400 border border-white text-white text-2xl font-bold rounded-3xl hover:bg-blue-600 transition">
+	  <Link href="/login"><button className="px-7 py-3  bg-blue-400 border border-white text-white text-2xl font-bold rounded-3xl hover:bg-blue-600 transition">
        Get Start
-      </button>
+      </button></Link>
 		
 	  
 	  </div>
