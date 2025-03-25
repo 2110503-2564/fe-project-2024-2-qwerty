@@ -3,7 +3,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 
-export default async function getAppointments(companyID?: string){
+export default async function getAppointments(companyID: string|undefined, page?:number, limit?:number){
       
       const session = await getServerSession(authOptions);  
       if(!session?.user.token){
@@ -11,14 +11,14 @@ export default async function getAppointments(companyID?: string){
       }
       let response;
       if(companyID){
-            response = await fetch(`https://cedt-frontend-project-backend.vercel.app/api/v1/companies/${companyID}/appointments`, {
+            response = await fetch(`https://cedt-frontend-project-backend.vercel.app/api/v1/companies/${companyID}/appointments?page=${page??1}&&limit=${limit??25}`, {
                   method: "GET",
                   headers: {
                         authorization: `Bearer ${session.user.token}`,
                   },
             });
       }else{
-            response = await fetch(`https://cedt-frontend-project-backend.vercel.app/api/v1/appointments`, {
+            response = await fetch(`https://cedt-frontend-project-backend.vercel.app/api/v1/appointments?page=${page??1}&&limit=${limit??25}`, {
                   method: "GET",
                   headers: {
                         "Content-Type": "application/json",

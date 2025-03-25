@@ -21,19 +21,24 @@ export default function Register(){
       const [password, setPassword] = useState<string|undefined>(undefined);
 
       const [session, setSession] = useState<Session|null>(null);
+      const [errText, setErrText] = useState('');
       getSessionFromServer().then((data) => {setSession(data)});
       if(session){
             (useRouter()).push('/');
       }
-      const registerFunction = () => {
+      const registerFunction = async () => {
             if(name && email && tel && password){
-                  const res = userRegister(name, email, tel, password);
-                  signIn('credentials',{email, password, callbackUrl:'/'});
+                  const data = await userRegister(name, email, tel, password);
+                  if(data && ('msg' in data)){
+                        setErrText(data.msg);
+                  }else{
+                        signIn('credentials',{email, password, callbackUrl:'/'});
+                  }
             }
       }
 
       const checkValid = () => {
-            return validEmail && validPassword && validTel;
+            return name && email && tel && password && validEmail && validPassword && validTel;
       }
 
       return(
@@ -41,17 +46,18 @@ export default function Register(){
                  <div className="bg-white rounded-md flex flex-col justify-center items-center p-10">
                   <h1 className="text-lg">Register</h1>
                   <div className="m-2">
-                  <TextField onKeyDown={(e) => { if (e.key === "Enter" && name && checkValid()){registerFunction()}}} className='w-[260px]' required={true} label='Name' onChange={(e)=>{setName(e.target.value)}}></TextField>
+                  <TextField onKeyDown={(e) => { if (e.key === "Enter" && checkValid()){registerFunction()}}} className='w-[260px]' required={true} label='Name' onChange={(e)=>{setName(e.target.value)}}></TextField>
                   </div>
                   <div className="m-2">
-                  <TextField onKeyDown={(e) => { if (e.key === "Enter" && email && checkValid()){registerFunction()}}} className='w-[260px]' type='email' error={!validEmail} helperText={validEmail?'':'Please enter valid email'} required={true} label='Email' onChange={(e)=>{setValidEmail(e.target.validity.valid||(e.target.value=='')); setEmail(e.target.value)}}></TextField>
+                  <TextField onKeyDown={(e) => { if (e.key === "Enter" && checkValid()){registerFunction()}}} className='w-[260px]' type='email' error={!validEmail} helperText={validEmail?'':'Please enter valid email'} required={true} label='Email' onChange={(e)=>{setValidEmail(e.target.validity.valid||(e.target.value=='')); setEmail(e.target.value)}}></TextField>
                   </div>
                   <div className="m-2">
-                  <TextField onKeyDown={(e) => { if (e.key === "Enter" && tel && checkValid()){registerFunction()}}} className='w-[260px]' type='tel' error={!validTel} helperText={validTel?'':'Please enter valid phone number'} required={true} label='Tel' onChange={(e)=>{setValidTel(e.target.validity.valid||(e.target.value=='')); setTel(e.target.value)}}></TextField>
+                  <TextField onKeyDown={(e) => { if (e.key === "Enter" && checkValid()){registerFunction()}}} className='w-[260px]' type='tel' error={!validTel} helperText={validTel?'':'Please enter valid phone number'} required={true} label='Tel' onChange={(e)=>{setValidTel(e.target.validity.valid||(e.target.value=='')); setTel(e.target.value)}}></TextField>
                   </div>
                   <div className="m-2">
-                  <TextField onKeyDown={(e) => { if (e.key === "Enter" && password && checkValid()){registerFunction()}}} className='w-[260px]' type='password' error={!validPassword} inputProps={{ minLength: 6 }} helperText={validPassword?'':'Password should be atleast 6 characters'} required={true} label='Password' onChange={(e)=>{setValidPassword(!e.target.validity.tooShort||(e.target.value==''));setPassword(e.target.value)}}></TextField>
+                  <TextField onKeyDown={(e) => { if (e.key === "Enter" && checkValid()){registerFunction()}}} className='w-[260px]' type='password' error={!validPassword} inputProps={{ minLength: 6 }} helperText={validPassword?'':'Password should be atleast 6 characters'} required={true} label='Password' onChange={(e)=>{setValidPassword(!e.target.validity.tooShort||(e.target.value==''));setPassword(e.target.value)}}></TextField>
                   </div>
+                  <p className="text-red-400 text-sm text-center">{errText}</p>
                   <Link href='/login' className="text-sm text-cyan-600 hover:text-cyan-500">Already have account? Click Here</Link>
                   <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 shadow-sm text-white w-[100px] mt-[15px]" onClick={()=>{if(checkValid()){registerFunction()}}}>Register</button>
                  </div>

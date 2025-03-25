@@ -14,7 +14,7 @@ export default function List(){
     const [data, setData] = useState<AppointmentJson>();
     const [editMode, setEditMode] = useState<Map<string, boolean>>(new Map<string, boolean>());
     useEffect(() => {
-        getAppointments().then((data)=>{
+        getAppointments(undefined).then((data)=>{
             setData(data);
         });
     },[changeData]);
@@ -39,8 +39,8 @@ export default function List(){
                 <div className="w-[90%] flex flex-col space-y-5"> 
                     <div className="text-md">UserID: {item.user}</div>
                     <div className="text-md">Company: {item.company.name}</div>
-                    <div className="text-md">StartTime: {editMode?.get(item._id)?<LocalizationProvider dateAdapter={AdapterDayjs}><DateTimePicker maxDateTime={dayjs(item.endTime)} className="bg-white" onAccept={(val)=>{if(val){updateFunction(item._id, val.toDate(), undefined)}}}></DateTimePicker></LocalizationProvider>:item.startTime.toString()}</div>
-                    <div className="text-md">EndTime: {editMode?.get(item._id)?<LocalizationProvider dateAdapter={AdapterDayjs}><DateTimePicker minDateTime={dayjs(item.startTime)} className="bg-white" onAccept={(val)=>{if(val){updateFunction(item._id, undefined, val.toDate())}}}></DateTimePicker></LocalizationProvider>:item.endTime.toString()}</div>
+                    <div className="text-md">StartTime: {editMode?.get(item._id)?<LocalizationProvider dateAdapter={AdapterDayjs}><DateTimePicker maxDateTime={dayjs(item.endTime)} className="bg-white" onAccept={(val)=>{if(val){updateFunction(item._id, val.toDate(), undefined)}}}></DateTimePicker></LocalizationProvider>:(new Date(item.startTime)).toLocaleString()}</div>
+                    <div className="text-md">EndTime: {editMode?.get(item._id)?<LocalizationProvider dateAdapter={AdapterDayjs}><DateTimePicker minDateTime={dayjs(item.startTime)} className="bg-white" onAccept={(val)=>{if(val){updateFunction(item._id, undefined, val.toDate())}}}></DateTimePicker></LocalizationProvider>:(new Date(item.endTime)).toLocaleString()}</div>
                 </div>
                 <div className="w-[10%] flex flex-col justify-center items-center space-y-5">
                     <button className="text-white bg-blue-400 rounded-md border-2 border-black border-solid w-[100px] h-[40px] shadow-md hover:bg-blue-300" onClick={()=>{setEditMode(editMode?.set(item._id, !editMode.get(item._id)));setChange(!change)}}>Edit</button>

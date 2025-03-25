@@ -24,12 +24,17 @@ export default async function TopMenu() {
         </Link>
             
             <TopMenuItem  title = 'Companies' pageRef = '/companies'/>
-            <TopMenuItem  title = 'Profile' pageRef = '/profile'/>
+           {
+            session?<TopMenuItem  title = 'Profile' pageRef = '/profile'/>:null
+           }
             {
                 session?<TopMenuItem  title = 'New Booking' pageRef = '/booking'/>:null
             }
             {
                 session?<TopMenuItem  title = 'My Booking' pageRef = "/mybooking"></TopMenuItem>:null
+            }
+            {
+                (session?.user.role === 'admin')?<TopMenuItem  title = 'Users List' pageRef = "/userlist"></TopMenuItem>:null
             }
 
 

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Card from "./Card";
 
 export default function CompaniesList({companiesJson, page}:{companiesJson:CompanyJson, page:number}) {
       const json = companiesJson;

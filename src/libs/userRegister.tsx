@@ -13,8 +13,9 @@ export default async function userRegister(name: string, userEmail: string, tel:
             }),
       });
 
-      if(!response.ok){
-            throw new Error("Unable to register");
-      }
+      // if(!response.ok){
+      //       throw new Error("Unable to register");
+      // }
+
       return await response.json();
 }

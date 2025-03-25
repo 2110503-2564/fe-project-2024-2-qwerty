@@ -10,7 +10,9 @@ interface User {
   
   interface UserJson {
     success: boolean,
-    data: User
+    count : number,
+    pagination: Object,
+    data: User[]
   }
 
   interface BookingItem {
@@ -51,5 +53,6 @@ interface CompanyJson {
 interface AppointmentJson {
   success: boolean,
   count: number,
+  pagination: Object,
   data: AppointmentItem[]
 }

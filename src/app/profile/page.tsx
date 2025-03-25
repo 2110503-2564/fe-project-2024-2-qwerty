@@ -5,7 +5,6 @@ import CardP from "@/components/CardP";
 export default function Profile() {
   return (
     <main className={styles.main}>
-       
       <div className="flex flex-col items-center w-full justify-center">
         <div className="flex flex-col items-center w-full  mt-[50px] mb-[50px] w-3/6">
           <div className="flex flex-col items-center shadow-2xl shadow-black-200">
