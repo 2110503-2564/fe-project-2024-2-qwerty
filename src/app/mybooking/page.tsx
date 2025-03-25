@@ -34,22 +34,30 @@ export default function List(){
         <div>
             <h2 className="text-center text-xl mt-[20px]">Total of {json.count} Appointments</h2>
             <div className=" justify-center flex">
-            <div className="w-1/2 bg-red-200" style = {{ margin:"20px", display:"flex", flexDirection:"column", padding:"10px"}}>
-            {(json.count == 0)?"No Companies":json.data.map((item) => (
-            <div className={`w-full rounded px-5 py-2 my-2 flex flex-row`} style={{backgroundColor: `${editMode.get(item._id)?'lightgreen':'lavender'}`}}key={item._id}>
-                <div className="w-[90%] flex flex-col space-y-5"> 
-                    <div className="text-md">UserID: {item.user}</div>
-                    <div className="text-md">Company: {item.company.name}</div>
-                    <div className="text-md">StartTime: {editMode?.get(item._id)?<LocalizationProvider dateAdapter={AdapterDayjs}><DateTimePicker maxDateTime={dayjs(item.endTime)} className="bg-white" onAccept={(val)=>{if(val){updateFunction(item._id, val.toDate(), undefined)}}}></DateTimePicker></LocalizationProvider>:(new Date(item.startTime)).toLocaleString()}</div>
-                    <div className="text-md">EndTime: {editMode?.get(item._id)?<LocalizationProvider dateAdapter={AdapterDayjs}><DateTimePicker minDateTime={dayjs(item.startTime)} className="bg-white" onAccept={(val)=>{if(val){updateFunction(item._id, undefined, val.toDate())}}}></DateTimePicker></LocalizationProvider>:(new Date(item.endTime)).toLocaleString()}</div>
-                </div>
-                <div className="w-[10%] flex flex-col justify-center items-center space-y-5">
-                    <button className="text-white bg-blue-400 rounded-md border-2 border-black border-solid w-[100px] h-[40px] shadow-md hover:bg-blue-300" onClick={()=>{setEditMode(editMode?.set(item._id, !editMode.get(item._id)));setChange(!change)}}>Edit</button>
-                    <button className="text-white bg-red-500 rounded-md border-2 border-black border-solid w-[100px] h-[40px] shadow-md hover:bg-red-400" onClick={() => {deleteFunction(item._id)}}>Delete</button>
+                <div className="w-1/2 bg-red-200" style = {{ margin:"20px", display:"flex", flexDirection:"column", padding:"10px"}}>
+                {(json.count == 0)?"No Companies":json.data.map((item) => (
+                    <div className={`w-full rounded px-5 py-2 my-2 flex flex-row`} style={{backgroundColor: `${editMode.get(item._id)?'lightgreen':'lavender'}`}}key={item._id}>
+                        <div className="w-[90%] flex flex-col space-y-5"> 
+                            <div className="text-md">UserID: {item.user}</div>
+                            <div className="text-md">Company: {item.company.name}</div>
+                            <div className="text-md">StartTime: {editMode?.get(item._id)?<LocalizationProvider dateAdapter={AdapterDayjs}><DateTimePicker maxDateTime={dayjs(item.endTime)} className="bg-white" onAccept={(val)=>{if(val){updateFunction(item._id, val.toDate(), undefined)}}}></DateTimePicker></LocalizationProvider>:(new Date(item.startTime)).toLocaleString()}</div>
+                            <div className="text-md">EndTime: {editMode?.get(item._id)?<LocalizationProvider dateAdapter={AdapterDayjs}><DateTimePicker minDateTime={dayjs(item.startTime)} className="bg-white" onAccept={(val)=>{if(val){updateFunction(item._id, undefined, val.toDate())}}}></DateTimePicker></LocalizationProvider>:(new Date(item.endTime)).toLocaleString()}</div>
+                        </div>
+                        <div className="w-[10%] flex flex-col justify-center items-center space-y-5">
+                            <button className="text-white bg-blue-400 rounded-md border-2 border-black border-solid w-[100px] h-[40px] shadow-md hover:bg-blue-300" onClick={()=>{setEditMode(editMode?.set(item._id, !editMode.get(item._id)));setChange(!change)}}>Edit</button>
+                            <button className="text-white bg-red-500 rounded-md border-2 border-black border-solid w-[100px] h-[40px] shadow-md hover:bg-red-400" onClick={() => {deleteFunction(item._id)}}>Delete</button>
+                        </div>
+                    </div>
+                ))}
                 </div>
             </div>
-            ))}
-            </div>
+            <div className="flex justify-center mt-4">
+                <button className="px-4 py-2 mx-2 bg-gray-200 rounded-md" >
+                    ก่อนหน้า
+                </button>
+                <button className="px-4 py-2 mx-2 bg-gray-200 rounded-md" >
+                    ถัดไป
+                </button>
             </div>
         </div>
     );

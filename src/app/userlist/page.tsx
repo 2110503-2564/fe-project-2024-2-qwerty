@@ -18,7 +18,11 @@ export default function UserList() {
     <main className="p-5">
       <Suspense fallback = {<p className="text-center">Loading... <LinearProgress></LinearProgress></p>}>
         <UsersList usersJson={data} page={page}></UsersList>
-      </Suspense>  
+      </Suspense>
+      <div className="justify-end flex ">
+      <button className="bg-orange-300 hover:bg-gray-400 px-4 py-1 mx-2 rounded-2xl">{"< "}ก่อนหน้า</button>
+      <button className="bg-orange-400 hover:bg-gray-400 px-4 py-1 mx-2 rounded-2xl">ถัดไป{" >"}</button>
+</div>
     </main>
   );
 }
